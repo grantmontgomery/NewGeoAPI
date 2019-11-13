@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 
 
 class City extends Component {
-    state = {  }
+    state={}
     render() { 
         return (
             <div>
-                Hallo ich bin City!
+                <p>You are located in...</p>
+                <p>{this.props.city}</p>
             </div>
           );
     }
