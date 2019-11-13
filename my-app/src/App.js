@@ -14,18 +14,14 @@ class App extends Component {
         }
     }
 
-    // fetchData(){
-            
-    //         fetch(`https://api.opencagedata.com/geocode/v1/json?q=${}&key=${process.env.REACT_APP_OPENCAGE_API_KEY}`, {
-    //         method: "GET",
-    //         withCredentials: true,
-    //         credentials: "include",
-    //         headers: {
-    //         Authentication: `${process.env.REACT_APP_OPENCAGE_API_KEY}`
-    //     }
-    //     })
+    fetchData = () => {
+        const coords = `${this.state.lat}%2C+${this.state.long}`
+        fetch(`https://api.opencagedata.com/geocode/v1/json?q=${coords}&key=${process.env.REACT_APP_OPENCAGE_API_KEY}`)
+        .then(response => response.json())
+        .then(data => console.log(data.results))
+        .catch(error => console.log(error.message))
         
-    // }
+    }
     
 
     componentDidMount(){
@@ -33,10 +29,10 @@ class App extends Component {
             position => this.setState({lat: position.coords.latitude, long: position.coords.longitude}),
             error => this.setState({errorMessage: error.message})
         ) 
-        console.log("My component was rendered to the screen.")
+        this.fetchData()
     }
+
     render() { 
-        console.log(process.env.REACT_APP_OPENCAGE_API_KEY)
         return (
             <div>
                 <City>
