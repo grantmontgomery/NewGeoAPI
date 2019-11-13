@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {City} from "./components"
 require("dotenv").config()
 
 
@@ -12,6 +13,21 @@ class App extends Component {
             errorMessage: ""
         }
     }
+
+    // fetchData(){
+            
+    //         fetch(`https://api.opencagedata.com/geocode/v1/json?q=${}&key=${process.env.REACT_APP_OPENCAGE_API_KEY}`, {
+    //         method: "GET",
+    //         withCredentials: true,
+    //         credentials: "include",
+    //         headers: {
+    //         Authentication: `${process.env.REACT_APP_OPENCAGE_API_KEY}`
+    //     }
+    //     })
+        
+    // }
+    
+
     componentDidMount(){
         window.navigator.geolocation.getCurrentPosition(
             position => this.setState({lat: position.coords.latitude, long: position.coords.longitude}),
@@ -23,9 +39,9 @@ class App extends Component {
         console.log(process.env.REACT_APP_OPENCAGE_API_KEY)
         return (
             <div>
-                <p>
-                    Hallo Welt!
-                </p>
+                <City>
+
+                </City>
                 <p>
                     {this.state.lat}
                     <br/>
